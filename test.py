@@ -15,6 +15,7 @@ fryoptions = {
     "medium": 1.50,
     "large": 2.00
 }
+cont = True
 br = True
 while br:
     print("Your sandwhich options are,")
