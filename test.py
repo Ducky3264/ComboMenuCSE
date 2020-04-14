@@ -1,7 +1,4 @@
 class Funcs:
-
-
-
     def AskMenu(self):
         br = True
         in1, in2, in3, in4, in5 = "", "", "", "", ""
@@ -71,15 +68,21 @@ class Funcs:
                 print("Please input y or n.")
         numketc = input("How many ketchup packets would you like?")
         P_ket = int(numketc) * 0.25
+        return price + priceB + fryprice + P_ket - 1 if in2 == 'y' and in4 == 'y' else price + priceB + fryprice + P_ket
 
 cont = True
+FinalVals = []
 while cont:
     a = Funcs()
-    a.AskMenu()
-
-bev_add = "a " + in3 + " sized beverage, " if in3 != "" else "";
-fry_add = " a " + in5 + " sized fry, " if in5 != "" else "";
-ket_add = " and " + str(numketc) + " ketchup packets."
-print("Your final order is a " + in1 + " sandwhich, " + bev_add + fry_add + ket_add)
-final_price = price + priceB + fryprice + P_ket - 1 if in2 == 'y' and in4 == 'y' else price + priceB + fryprice + P_ket
-print("Total price is ", final_price)
+    FinalVals.append(a.AskMenu())
+    x = input("Would you like to place another order? y/n")
+    if x == "y":
+        cont = True
+    elif x == "n":
+        cont = False
+    else:
+        print("That is not an option, assuming yes.")
+FLPrice = 0
+for x in FinalVals:
+    FLPrice = FLPrice + x
+print("Total price is ", FLPrice)
